@@ -1,0 +1,6 @@
+@use '../../styles/variables' as *;
+
+.main {
+  min-height: calc(100vh - $navbar-height);
+  padding: $space-8 0;
+}

@@ -1,0 +1,80 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  @include container($max-width-wide);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.titleInput {
+  @include input-base;
+  font-size: $font-size-2xl;
+  font-weight: 600;
+  border: none;
+  border-bottom: 2px solid $color-border;
+  border-radius: 0;
+  padding: $space-3 0;
+
+  &:focus {
+    box-shadow: none;
+    border-bottom-color: $color-accent;
+  }
+}
+
+.editorWrapper {
+  min-height: 400px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $space-4;
+  border-top: 1px solid $color-border-light;
+  gap: $space-4;
+}
+
+.actions {
+  display: flex;
+  gap: $space-2;
+}
+
+.draftBtn {
+  @include button-secondary;
+  font-weight: 500;
+
+  &:hover:not(:disabled) {
+    background: $color-bg-secondary;
+    border-color: $color-text-secondary;
+  }
+}
+
+.publishBtn {
+  @include button-primary;
+  font-weight: 600;
+}
+
+.cancelBtn {
+  @include button-secondary;
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: $color-danger;
+
+  &:hover:not(:disabled) {
+    background: #fee2e2;
+    border-color: $color-danger;
+  }
+}
+
+.error {
+  padding: $space-3 $space-4;
+  background: #fef2f2;
+  color: $color-danger;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+}

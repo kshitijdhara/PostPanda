@@ -1,0 +1,353 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.container {
+  @include container($max-width-content);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $space-6;
+  transition: all $transition-fast;
+  text-decoration: none;
+
+  svg {
+    flex-shrink: 0;
+    transition: transform $transition-fast;
+  }
+
+  &:hover {
+    color: $color-accent;
+
+    svg {
+      transform: translateX(-2px);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+.header {
+  margin-bottom: $space-8;
+}
+
+.title {
+  font-size: $font-size-4xl;
+  font-weight: 700;
+  line-height: $line-height-tight;
+  margin-bottom: $space-4;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  flex-wrap: wrap;
+}
+
+.authorName {
+  font-weight: 500;
+  color: $color-text;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $space-2;
+  margin-left: auto;
+}
+
+.editBtn {
+  @include button-secondary;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.deleteBtn {
+  @include button-danger;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.draftBadge {
+  font-size: $font-size-xs;
+  padding: 2px $space-2;
+  background: $color-warning;
+  color: white;
+  border-radius: $radius-full;
+  font-weight: 500;
+}
+
+.content {
+  margin-bottom: $space-8;
+}
+
+// Like bar
+.likeBar {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4 0;
+  margin-bottom: $space-8;
+  border-top: 1px solid $color-border-light;
+  border-bottom: 1px solid $color-border-light;
+}
+
+.likeBtn {
+  @include button-secondary;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  transition: all $transition-fast;
+
+  svg {
+    flex-shrink: 0;
+    transition: transform $transition-fast;
+  }
+
+  &:hover:not(:disabled) svg {
+    transform: scale(1.2);
+  }
+
+  &.liked {
+    background: #fef2f2;
+    border-color: #fca5a5;
+    color: $color-danger;
+
+    svg {
+      fill: $color-danger;
+      color: $color-danger;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: default;
+  }
+}
+
+.bookmarkBtn {
+  @include button-secondary;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  transition: all $transition-fast;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &.bookmarked {
+    background: $color-accent-light;
+    border-color: #93c5fd;
+    color: $color-accent;
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: default;
+  }
+}
+
+.likeHint {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+
+  a {
+    color: $color-accent;
+  }
+}
+
+// Comment vote buttons
+.commentActions {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-top: $space-2;
+}
+
+.voteGroup {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+.voteBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: $space-1 $space-2;
+  border-radius: $radius-full;
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  transition: all $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: $color-bg-secondary;
+    color: $color-text;
+    border-color: $color-border;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &.votedUp {
+    background: #eff6ff;
+    border-color: #93c5fd;
+    color: $color-accent;
+  }
+
+  &.votedDown {
+    background: #fef2f2;
+    border-color: #fca5a5;
+    color: $color-danger;
+  }
+}
+
+.replyBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: $space-1 $space-2;
+  border-radius: $radius-full;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-bg-secondary;
+    color: $color-text;
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: $space-16 0;
+  color: $color-text-muted;
+}
+
+.notFound {
+  text-align: center;
+  padding: $space-16 0;
+  color: $color-text-secondary;
+
+  h2 {
+    margin-bottom: $space-2;
+  }
+}
+
+.commentSection {
+  border-top: 1px solid $color-border;
+  padding-top: $space-8;
+}
+
+.commentHeader {
+  font-size: $font-size-xl;
+  font-weight: 600;
+  margin-bottom: $space-6;
+}
+
+.commentForm {
+  margin-bottom: $space-6;
+}
+
+.commentTextarea {
+  @include input-base;
+  min-height: 100px;
+  resize: vertical;
+  margin-bottom: $space-3;
+}
+
+.commentSubmit {
+  @include button-primary;
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.comment {
+  padding: $space-4;
+  background: $color-bg-secondary;
+  border-radius: $radius-md;
+}
+
+.commentMeta {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-bottom: $space-2;
+  font-size: $font-size-sm;
+}
+
+.commentAuthor {
+  font-weight: 500;
+}
+
+.commentDate {
+  color: $color-text-muted;
+}
+
+.commentContent {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+}
+
+.commentDelete {
+  font-size: $font-size-xs;
+  color: $color-danger;
+  cursor: pointer;
+  background: none;
+  border: none;
+  margin-left: auto;
+  transition: all $transition-fast;
+  padding: 0;
+
+  &:hover {
+    color: $color-danger-hover;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-danger;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+.reply {
+  margin-left: $space-8;
+}

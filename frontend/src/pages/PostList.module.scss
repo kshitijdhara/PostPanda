@@ -1,0 +1,120 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.container {
+  @include container($max-width-wide);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-8;
+}
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: 700;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: $space-6;
+}
+
+.searchIcon {
+  position: absolute;
+  left: $space-3;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color-text-muted;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  @include input-base;
+  padding-left: $space-10;
+  padding-right: $space-8;
+}
+
+.searchSpinner {
+  position: absolute;
+  right: $space-3;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid $color-border;
+  border-top-color: $color-accent;
+  border-radius: $radius-full;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.searchMeta {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $space-4;
+}
+
+.grid {
+  display: grid;
+  gap: $space-4;
+}
+
+.empty {
+  text-align: center;
+  padding: $space-16 0;
+  color: $color-text-secondary;
+
+  h2 {
+    margin-bottom: $space-2;
+  }
+
+  p {
+    margin-bottom: $space-6;
+  }
+}
+
+.ctaBtn {
+  @include button-primary;
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-4;
+  margin-top: $space-8;
+}
+
+.pageBtn {
+  @include button-secondary;
+  min-width: 40px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.pageInfo {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.loading {
+  text-align: center;
+  padding: $space-16 0;
+  color: $color-text-muted;
+}

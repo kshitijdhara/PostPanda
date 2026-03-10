@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pillContainer {
+  display: flex;
+  align-items: center;
+}
+
+.pillTrack {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: $color-bg-secondary;
+  border-radius: $radius-full;
+  padding: $space-1;
+  gap: 0;
+}
+
+.pillSlider {
+  position: absolute;
+  top: $space-1;
+  left: $space-1;
+  height: calc(100% - #{$space-2});
+  width: calc(50% - #{$space-1});
+  background: $color-accent;
+  border-radius: calc($radius-full - 2px);
+  transition: left 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 0;
+
+  &.slider-drafts {
+    left: calc(50% + #{$space-1});
+  }
+}
+
+.pillButton {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border-radius: $radius-full;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $color-text-secondary;
+  transition: color 200ms ease;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+
+  &.active {
+    color: white;
+  }
+
+  svg {
+    flex-shrink: 0;
+    transition: transform 200ms ease;
+  }
+
+  &.active svg {
+    transform: scale(1.05);
+  }
+}
